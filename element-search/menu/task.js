@@ -11,16 +11,16 @@ for (let i = 0; i < arrLink.length; i++) {
         let popUpMenuStart = arrLink[activeNumber].closest('.menu__item').querySelector('.menu_active');
 
         if ((popUpMenuStart != null) && (i != activeNumber)) {
-            popUpMenuStart.className = 'menu menu_sub';
+            popUpMenuStart.classList.remove('menu_active');
             active = false;    
         };
 
         if (!active) {
-            popUpMenu.className = 'menu menu_sub menu_active';
+            popUpMenu.classList.add('menu_active');
             active = true;
             activeNumber = i;
         } else {
-            popUpMenu.className = 'menu menu_sub'
+            popUpMenu.classList.remove('menu_active');
             active = false;            
         }
         
