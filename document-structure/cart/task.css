@@ -1,6 +1,10 @@
 body {
   font-family: Arial;
 }
+.cart {
+  display: none;
+}
+
 .cart__products {
   display: flex;
   justify-content: center;
@@ -88,4 +92,15 @@ body {
 
 .product-shadow {
   position: absolute;
+}
+
+.cart__remove {
+  color: red;
+  font-size: 30px;
+  text-decoration: none;
+  cursor: pointer; 
+}
+
+.cart__active {
+  display: block;
 }
