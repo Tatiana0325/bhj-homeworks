@@ -1,3 +1,11 @@
 body {
   font-family: Arial;
 }
+
+.poll__answer {
+  border-radius: 15px;
+}
+
+.poll__answer:nth-child(n+2) {
+  margin-left: 10px;
+}
