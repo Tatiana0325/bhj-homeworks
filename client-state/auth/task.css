@@ -35,3 +35,15 @@ body {
 .welcome_active {
   display: block;
 }
+
+.row__close {
+  display: block;
+}
+
+.never {
+  display: none;
+}
+
+.never_active {
+  display: block;
+}
