@@ -3,20 +3,17 @@ const progress = document.getElementById( 'progress' );
 let downloadForm = document.getElementById('form');
 
 downloadForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
     let formData = new FormData(downloadForm);
     let xhr = new XMLHttpRequest();
     
     xhr.open('POST', 'https://netology-slow-rest.herokuapp.com/upload.php');
-    if (progress.value < 1) {
-        xhr.upload.onprogress = function() {
-            progress.value += 0.1;
-        }
-    } else {
-        xhr.upload.onload = function() {
-            progress.value = 1;
-        }
-    }
-
+        xhr.upload.addEventListener('progress', function(event) {
+            if (event.lengthComputable) {
+                progress.value = event.loaded / event.total;
+            };
+        });
+        
     xhr.send(formData);
-    e.preventDefault();
 });
