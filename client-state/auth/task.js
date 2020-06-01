@@ -7,7 +7,13 @@ let userId = document.getElementById('user_id');
 
 const form = document.getElementById('signin__form');
 
-const controlInput = document.querySelectorAll('.control')
+const controlInput = document.querySelectorAll('.control');
+
+if((localStorage.getItem('user') == 'demo') && (localStorage.getItem('password') == 'demo')) {
+    authorization.classList.remove('signin_active');
+    welcome.classList.add('welcome_active');
+    userId.textContent = localStorage.getItem('id');
+}
 
 form.addEventListener('submit', (e) => {
     let formData = new FormData(form);
@@ -21,6 +27,9 @@ form.addEventListener('submit', (e) => {
             if (data.success) {
                 authorization.classList.remove('signin_active');
                 welcome.classList.add('welcome_active');
+                localStorage.setItem('user', controlInput[0].value);
+                localStorage.setItem('password', controlInput[1].value);
+                localStorage.setItem('id', data.user_id)
                 userId.textContent = data.user_id;
             } else {
                 neverActive.classList.add('never_active');
@@ -41,5 +50,5 @@ closeButton.onclick = function() {
     neverActive.classList.remove('never_active');
     controlInput[0].value = '';
     controlInput[1].value = '';
-   
+    localStorage.clear();  
 }
